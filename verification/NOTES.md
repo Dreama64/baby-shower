@@ -6,4 +6,8 @@ Verificación visual a 1280 px y 390 px: sin desbordamiento horizontal, imágene
 
 Compilación de producción y revisión TypeScript correctas con Webpack. Capturas desktop.jpg, mobile.jpg e integrated-gifts.jpg actualizadas con el rediseño.
 
-La persistencia, concurrencia y autorización de Supabase requieren un proyecto conectado con la migración aplicada. El usuario confirmó que aún no dispone de proyecto y pidió instrucciones; la prueba real incluida sigue pendiente de ejecutar.
+El 2 de noviembre de 2026 se creó un proyecto nuevo de Supabase y se aplicaron la migración y el catálogo inicial. Se configuraron las variables públicas de GitHub Actions y se desplegó la web con conexión real. Una cuenta creada por el usuario fue incluida en la lista de administradores; las contraseñas permanecen fuera del código y del chat.
+
+Prueba real contra la API pública: dos reservas simultáneas sobre un regalo temporal produjeron exactamente un ganador y un error de unicidad para la segunda petición. El reintento del ganador fue idempotente. El estado reservado persistió y fue visible en el catálogo público; el nombre del invitado no fue accesible anónimamente. Las inserciones directas en reservas fueron rechazadas. El regalo y la reserva temporales se eliminaron con autorización explícita del usuario.
+
+Estado comprobado por SQL tras limpiar: un administrador, seis regalos y cero reservas. Comprobación web: catálogo real sin aviso de ejemplo y botones de reserva habilitados. El acceso interactivo con la contraseña elegida debe comprobarlo el usuario desde /admin/; no se solicitó ni se leyó esa contraseña.

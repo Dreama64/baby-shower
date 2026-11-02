@@ -1,5 +1,7 @@
 # Nuestro Baby Shower
 
+**Estado actual:** GitHub Pages conectado al proyecto nuevo de Supabase. Catálogo inicial de seis regalos cargado, reservas persistentes y cuenta de anfitrión autorizada. Las variables públicas se configuraron en GitHub Actions; no se guardaron contraseñas ni claves secretas en el repositorio. El registro público de cuentas está deshabilitado. Los invitados reservan sin crear una cuenta.
+
 Web de Valentina y Sergio para el **12 de diciembre de 2026, 14:30, America/Santiago**, inspirada en la [referencia Canva](https://sea-turtle-q4pqwm.my.canva.site/nuestrobabyshower). Next.js App Router, TypeScript, Tailwind CSS y Supabase. Solo regalos por reserva, **sin pagos**. Organizada en cuatro páginas con un menú común: Inicio, La celebración, Regalitos y Asistencia. Cada página tiene su propia composición, manteniendo la identidad visual de la invitación.
 
 ## Publicación gratuita en GitHub Pages
@@ -111,11 +113,11 @@ Se inspeccionaron todas las secciones de Canva. Tras la revisión del usuario, l
 
 Las ilustraciones, SVG y fuentes de `public/invitation` proceden de la referencia facilitada; no se importó el código de ejecución de Canva. La composición usa secciones fluidas y una adaptación específica a móvil. La nube tiene un movimiento suave que se desactiva con la preferencia de movimiento reducido. Los regalos usan SVG originales de este proyecto y pueden sustituirse por fotos desde el panel. Los recursos Canva no se ofrecen como una biblioteca bajo licencia abierta.
 
-## Pendiente para activar las reservas
+## Configuración completada y siguientes pasos
 
-- Crear/conectar Supabase, ejecutar migración y opcional seed, autorizar al administrador.
-- Validar el catálogo real con los anfitriones.
-- Ejecutar la prueba de integración sobre una base de pruebas.
-- Configurar las variables de Supabase en GitHub Actions y verificar dos reservas simultáneas en la web final.
+- Supabase conectado, migración y catálogo inicial aplicados, administrador autorizado.
+- Variables públicas configuradas y nueva compilación desplegada en GitHub Pages.
+- Prueba real de dos reservas simultáneas: un solo ganador, duplicado rechazado, reintento idempotente, nombres protegidos e inserciones directas denegadas. Los datos temporales de la prueba se eliminaron con autorización del usuario.
+- Revisar y personalizar los seis regalos iniciales desde el panel antes de compartir la lista definitiva.
 
 No se modifican repositorios, bases de datos ni servicios existentes.
