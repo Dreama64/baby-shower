@@ -1,10 +1,10 @@
 # Nuestro Baby Shower
 
-Invitación de Valentina y Sergio para el **12 de diciembre de 2026, 14:30, America/Santiago**, basada en la [referencia Canva](https://sea-turtle-q4pqwm.my.canva.site/nuestrobabyshower). Next.js App Router, TypeScript, Tailwind CSS y Supabase. Solo regalos por reserva, **sin pagos**.
+Web de Valentina y Sergio para el **12 de diciembre de 2026, 14:30, America/Santiago**, inspirada en la [referencia Canva](https://sea-turtle-q4pqwm.my.canva.site/nuestrobabyshower). Next.js App Router, TypeScript, Tailwind CSS y Supabase. Solo regalos por reserva, **sin pagos**. Rediseñada como una web con navegación, portada a dos columnas, detalles del evento, catálogo integrado y confirmación por WhatsApp.
 
 ## Incluido
 
-- `/`: reproducción de la composición vertical, textos, acuarela, lazos, elefantes y nubes de la referencia. Recursos locales, GIF original de la mano y contador propio sin iframe ni rastreadores de Canva.
+- `/`: web responsive con secciones de celebración, regalos y asistencia. Conserva la paleta, ilustraciones, nombres, fecha y ubicación; incorpora una presentación nueva adaptada a web y un contador propio.
 - `/regalos`: imágenes, filtro disponible/reservado, formulario con nombre, confirmación y actualización cada 15 segundos y al recuperar el foco.
 - `/admin`: acceso con Supabase Auth, alta y edición de regalos, imagen por URL, orden, ocultación y listado/liberación de reservas.
 - SQL con RLS, lista explícita de administradores, RPC de reservas, bloqueo de fila, `UNIQUE(gift_id)` e idempotencia por solicitud UUID. La persistencia es PostgreSQL real; no se usa localStorage para reservas.
@@ -21,7 +21,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Abrir `http://localhost:3000`. Sin configuración de Supabase, la invitación funciona y el catálogo informa que está pendiente; nunca simula una reserva exitosa.
+Abrir `http://localhost:3000`. Sin configuración de Supabase, se muestran seis regalos de ejemplo identificados como tales. Se puede abrir su formulario, pero la confirmación está deshabilitada hasta conectar Supabase; nunca simula una reserva exitosa. Con Supabase configurado, los regalos y estados provienen de la base real y se habilita la reserva.
 
 ## Supabase: proyecto nuevo
 
@@ -82,9 +82,9 @@ Alternativa: cualquier host Node que ejecute `npm ci`, `npm run build` y `npm st
 
 ## Decisiones visuales y recursos
 
-Se inspeccionaron todas las secciones de Canva: portada, cita, padres, fecha/contador, ubicación, regalos y cierre. Se conservó el texto y los enlaces de mapa y confirmación. El botón que apuntaba al editor de Canva se reemplazó por `/regalos`. El contador respeta el instante `2026-12-12T14:30:00-03:00` y deja de descontar en cero.
+Se inspeccionaron todas las secciones de Canva. Tras la revisión del usuario, la composición se rediseñó como una web: navegación, portada a dos columnas, detalles del evento, catálogo integrado y asistencia. Se conservaron los datos del evento, la cita, los nombres y la identidad visual. El botón de la portada lleva a `#regalos`; `/regalos` también permite abrir el catálogo directamente. El contador respeta el instante `2026-12-12T14:30:00-03:00` y deja de descontar en cero.
 
-Las ilustraciones, SVG recoloreados y fuentes de `public/invitation` proceden de la referencia facilitada para esta reproducción; no se importó el código de ejecución de Canva. Se reconstruyeron el arco blanco y el contador. La composición se escala de forma proporcional y mantiene una anchura máxima para escritorio. No se promete igualdad píxel por píxel en todos los tamaños ni en animaciones internas no observadas. Los regalos usan SVG originales de este proyecto y pueden sustituirse por fotos desde el panel. Los recursos Canva no se ofrecen como una biblioteca bajo licencia abierta.
+Las ilustraciones, SVG y fuentes de `public/invitation` proceden de la referencia facilitada; no se importó el código de ejecución de Canva. La composición usa secciones fluidas y una adaptación específica a móvil. La nube tiene un movimiento suave que se desactiva con la preferencia de movimiento reducido. Los regalos usan SVG originales de este proyecto y pueden sustituirse por fotos desde el panel. Los recursos Canva no se ofrecen como una biblioteca bajo licencia abierta.
 
 ## Pendiente para publicar
 
