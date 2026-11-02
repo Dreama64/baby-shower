@@ -78,7 +78,20 @@ Consultar `verification/NOTES.md` para el alcance de las comprobaciones realizad
 5. Probar desde dos navegadores que el mismo regalo solo puede reservarse una vez, que recargar mantiene la reserva, y que un usuario sin permisos no puede leer los nombres ni administrar.
 6. Revisar productos, fecha, lugar y teléfonos con los anfitriones antes de compartir el enlace.
 
-Alternativa: cualquier host Node que ejecute `npm ci`, `npm run build` y `npm start`, con las mismas variables. No es un sitio estático exportado.
+Alternativa: cualquier host Node que ejecute `npm ci`, `npm run build` y `npm start`, con las mismas variables.
+
+## Publicación en Render Static Sites
+
+Esta web también funciona como exportación estática de Next.js: los datos, autenticación y reservas se conectan directamente a Supabase con sus políticas de seguridad. No necesita un servidor Node permanente.
+
+- Repositorio: `https://github.com/Dreama64/baby-shower`, rama `main`.
+- Build: `npm ci && npm run build:static`.
+- Publish directory: `out`.
+- Las rutas `/admin/` y `/regalos/` se exportan como carpetas con su propio HTML. No añadir una regla SPA que convierta todas las rutas en la portada.
+- Configurar las dos variables públicas de Supabase y volver a desplegar cuando exista el proyecto. Sin ellas, se conserva el catálogo de ejemplo con confirmación de reservas deshabilitada.
+- Si se necesitan los encabezados de seguridad adicionales, configurarlos en Render Static Site → Headers: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` y `Referrer-Policy: strict-origin-when-cross-origin`.
+
+`npm run build` mantiene la opción de despliegue Node; `npm run build:static` genera `out/`. No versionar los archivos generados.
 
 ## Decisiones visuales y recursos
 
