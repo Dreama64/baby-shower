@@ -1,3 +1,7 @@
+import type { Metadata } from 'next';
 import GiftCatalog from '@/components/gift-catalog';
-import { sitePath } from '@/lib/site-path';
-export default function Gifts(){ return <main className="app-page"><div className="app-container"><a className="back-link" href={sitePath('/')}>← Volver a la invitación</a><GiftCatalog/></div></main>; }
+import SiteFrame from '@/components/site-frame';
+export const metadata: Metadata = { title: 'Regalitos · Nuestro Baby Shower' };
+export default function Gifts() {
+  return <SiteFrame active="regalos"><section className="gifts-page integrated-gifts"><div className="section-wrap"><GiftCatalog/></div></section></SiteFrame>;
+}

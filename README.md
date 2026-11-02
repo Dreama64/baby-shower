@@ -1,10 +1,10 @@
 # Nuestro Baby Shower
 
-Web de Valentina y Sergio para el **12 de diciembre de 2026, 14:30, America/Santiago**, inspirada en la [referencia Canva](https://sea-turtle-q4pqwm.my.canva.site/nuestrobabyshower). Next.js App Router, TypeScript, Tailwind CSS y Supabase. Solo regalos por reserva, **sin pagos**. Rediseñada como una web con navegación, portada a dos columnas, detalles del evento, catálogo integrado y confirmación por WhatsApp.
+Web de Valentina y Sergio para el **12 de diciembre de 2026, 14:30, America/Santiago**, inspirada en la [referencia Canva](https://sea-turtle-q4pqwm.my.canva.site/nuestrobabyshower). Next.js App Router, TypeScript, Tailwind CSS y Supabase. Solo regalos por reserva, **sin pagos**. Organizada en cuatro páginas con un menú común: Inicio, La celebración, Regalitos y Asistencia. Cada página tiene su propia composición, manteniendo la identidad visual de la invitación.
 
 ## Publicación gratuita en GitHub Pages
 
-Dirección prevista cuando termine el despliegue: **https://dreama64.github.io/baby-shower/**.
+Web pública: **https://dreama64.github.io/baby-shower/**.
 
 El repositorio debe ser público para usar GitHub Pages con GitHub Free. En Settings → Pages seleccionar **GitHub Actions** como Source. El flujo `.github/workflows/pages.yml` compila y publica cada cambio de `main` sin contratar alojamiento externo.
 
@@ -14,7 +14,9 @@ GitHub Pages aloja la web; Supabase sigue siendo necesario para persistir reserv
 
 ## Incluido
 
-- `/`: web responsive con secciones de celebración, regalos y asistencia. Conserva la paleta, ilustraciones, nombres, fecha y ubicación; incorpora una presentación nueva adaptada a web y un contador propio.
+- `/`: portada con bienvenida y presentación de los padres.
+- `/celebracion/`: fecha, cuenta regresiva, lugar y enlace al mapa.
+- `/asistencia/`: página de confirmación por WhatsApp con los contactos de mamá y papá.
 - `/regalos`: imágenes, filtro disponible/reservado, formulario con nombre, confirmación y actualización cada 15 segundos y al recuperar el foco.
 - `/admin`: acceso con Supabase Auth, alta y edición de regalos, imagen por URL, orden, ocultación y listado/liberación de reservas.
 - SQL con RLS, lista explícita de administradores, RPC de reservas, bloqueo de fila, `UNIQUE(gift_id)` e idempotencia por solicitud UUID. La persistencia es PostgreSQL real; no se usa localStorage para reservas.
@@ -105,15 +107,15 @@ Esta web también funciona como exportación estática de Next.js: los datos, au
 
 ## Decisiones visuales y recursos
 
-Se inspeccionaron todas las secciones de Canva. Tras la revisión del usuario, la composición se rediseñó como una web: navegación, portada a dos columnas, detalles del evento, catálogo integrado y asistencia. Se conservaron los datos del evento, la cita, los nombres y la identidad visual. El botón de la portada lleva a `#regalos`; `/regalos` también permite abrir el catálogo directamente. El contador respeta el instante `2026-12-12T14:30:00-03:00` y deja de descontar en cero.
+Se inspeccionaron todas las secciones de Canva. Tras la revisión del usuario, la composición se rediseñó como una web: navegación, portada a dos columnas, detalles del evento, catálogo integrado y asistencia. Se conservaron los datos del evento, la cita, los nombres y la identidad visual. Los botones de la portada y el menú llevan a las páginas `/celebracion/`, `/regalos/` y `/asistencia/`. El contador respeta el instante `2026-12-12T14:30:00-03:00` y deja de descontar en cero.
 
 Las ilustraciones, SVG y fuentes de `public/invitation` proceden de la referencia facilitada; no se importó el código de ejecución de Canva. La composición usa secciones fluidas y una adaptación específica a móvil. La nube tiene un movimiento suave que se desactiva con la preferencia de movimiento reducido. Los regalos usan SVG originales de este proyecto y pueden sustituirse por fotos desde el panel. Los recursos Canva no se ofrecen como una biblioteca bajo licencia abierta.
 
-## Pendiente para publicar
+## Pendiente para activar las reservas
 
 - Crear/conectar Supabase, ejecutar migración y opcional seed, autorizar al administrador.
 - Validar el catálogo real con los anfitriones.
 - Ejecutar la prueba de integración sobre una base de pruebas.
-- Crear el proyecto de despliegue y configurar sus variables; verificar dos reservas simultáneas en la web final.
+- Configurar las variables de Supabase en GitHub Actions y verificar dos reservas simultáneas en la web final.
 
 No se modifican repositorios, bases de datos ni servicios existentes.
