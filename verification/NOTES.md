@@ -11,3 +11,9 @@ El 2 de noviembre de 2026 se creó un proyecto nuevo de Supabase y se aplicaron 
 Prueba real contra la API pública: dos reservas simultáneas sobre un regalo temporal produjeron exactamente un ganador y un error de unicidad para la segunda petición. El reintento del ganador fue idempotente. El estado reservado persistió y fue visible en el catálogo público; el nombre del invitado no fue accesible anónimamente. Las inserciones directas en reservas fueron rechazadas. El regalo y la reserva temporales se eliminaron con autorización explícita del usuario.
 
 Estado comprobado por SQL tras limpiar: un administrador, seis regalos y cero reservas. Comprobación web: catálogo real sin aviso de ejemplo y botones de reserva habilitados. El acceso interactivo con la contraseña elegida debe comprobarlo el usuario desde /admin/; no se solicitó ni se leyó esa contraseña.
+
+## Subida de fotos
+
+Se aplicó la migración 002_gift_photos.sql en el proyecto Baby Shower. Se publicó el selector de fotos con vista previa y conversión a WebP. La compilación y TypeScript pasaron. La API de Storage rechazó una subida anónima por RLS sin crear archivo.
+
+Prueba completa desde el panel con la sesión del administrador: se seleccionó una imagen PNG, se creó un regalo oculto de prueba, la imagen se convirtió y subió a Storage, y el regalo se guardó correctamente. Tras recargar, la foto siguió disponible al editarlo. Se eliminaron solo ese regalo temporal y su archivo con autorización explícita del usuario. Se mantuvieron los seis regalos originales y la reserva existente.
