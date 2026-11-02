@@ -1,7 +1,8 @@
 import Countdown from '@/components/countdown';
 import GiftCatalog from '@/components/gift-catalog';
+import { sitePath } from '@/lib/site-path';
 
-const art = '/invitation/';
+const art = sitePath('/invitation/');
 
 export default function Home() {
   return <div className="baby-site">
@@ -37,6 +38,6 @@ export default function Home() {
       <section className="integrated-gifts" id="regalos"><div className="section-wrap"><GiftCatalog/></div></section>
       <section className="attendance section-wrap" id="asistencia"><img src={art+'366a36349d519b2ff81f93fa8accd8a2.png'} alt="Elefantito con globos celestes"/><div><span className="eyebrow">TU PRESENCIA ES LO MÁS IMPORTANTE</span><h2>¡Te esperamos!</h2><p>Nos hará muy felices compartir este día contigo.<br/>Confirma tu asistencia con mamá o papá.</p><div className="hero-actions"><a className="primary" href="https://wa.me/56941369931?text=Hola%2C%20quiero%20confirmar%20mi%20asistencia%20al%20baby%20shower" target="_blank" rel="noopener noreferrer">Escribir a mamá ↗</a><a className="secondary" href="https://wa.me/56961977317?text=Hola%2C%20quiero%20confirmar%20mi%20asistencia%20al%20baby%20shower" target="_blank" rel="noopener noreferrer">Escribir a papá ↗</a></div></div></section>
     </main>
-    <footer className="site-footer"><span>Con cariño, Valentina y Sergio ♡</span><a href="/admin">Acceso anfitriones</a></footer>
+    <footer className="site-footer"><span>Con cariño, Valentina y Sergio ♡</span><a href={sitePath('/admin/')}>Acceso anfitriones</a></footer>
   </div>;
 }

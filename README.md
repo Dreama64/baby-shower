@@ -2,6 +2,16 @@
 
 Web de Valentina y Sergio para el **12 de diciembre de 2026, 14:30, America/Santiago**, inspirada en la [referencia Canva](https://sea-turtle-q4pqwm.my.canva.site/nuestrobabyshower). Next.js App Router, TypeScript, Tailwind CSS y Supabase. Solo regalos por reserva, **sin pagos**. Rediseñada como una web con navegación, portada a dos columnas, detalles del evento, catálogo integrado y confirmación por WhatsApp.
 
+## Publicación gratuita en GitHub Pages
+
+Dirección prevista cuando termine el despliegue: **https://dreama64.github.io/baby-shower/**.
+
+El repositorio debe ser público para usar GitHub Pages con GitHub Free. En Settings → Pages seleccionar **GitHub Actions** como Source. El flujo `.github/workflows/pages.yml` compila y publica cada cambio de `main` sin contratar alojamiento externo.
+
+La compilación configura `NEXT_PUBLIC_BASE_PATH=/baby-shower` para que enlaces, imágenes y fuentes funcionen en la subcarpeta. Para activar Supabase más adelante, añadir `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` como variables del repositorio (Settings → Secrets and variables → Actions → Variables) y volver a ejecutar Publish Baby Shower. Ambas son públicas; nunca añadir una clave service-role.
+
+GitHub Pages aloja la web; Supabase sigue siendo necesario para persistir reservas reales y autenticar a los anfitriones. Mientras no se configure, se muestran regalos de ejemplo sin confirmar reservas.
+
 ## Incluido
 
 - `/`: web responsive con secciones de celebración, regalos y asistencia. Conserva la paleta, ilustraciones, nombres, fecha y ubicación; incorpora una presentación nueva adaptada a web y un contador propio.
