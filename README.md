@@ -56,7 +56,13 @@ NEXT_PUBLIC_SUPABASE_URL=https://TU_PROYECTO.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=TU_CLAVE_PUBLICA
 ```
 
-7. Reiniciar el servidor. Entrar en `/admin` con el usuario autorizado y revisar los regalos. El panel admite imágenes mediante URL HTTPS o los SVG incluidos en `/gifts/`. Puede usarse un bucket de Supabase Storage para alojar fotos y pegar sus URLs públicas; esta versión no incluye subida de archivos.
+7. Ejecutar `supabase/migrations/002_gift_photos.sql` para habilitar el almacenamiento de fotos. Entrar en `/admin` con el usuario autorizado y revisar los regalos. El botón **Subir una foto** permite elegir una imagen del celular o computador y ver su vista previa. Se carga al pulsar **Guardar regalo**. El campo de enlace sigue disponible como alternativa.
+
+### Fotos de regalos
+
+El bucket `baby-shower-gifts` permite lectura pública de imágenes para mostrarlas a los invitados. Las políticas permiten subir y limpiar archivos solo a administradores, dentro de la carpeta de su usuario. No se incluyen claves secretas ni se necesita service-role.
+
+Las fotos se reducen en el navegador a un máximo de 1600 píxeles y se convierten a WebP, sin conservar los metadatos originales. Se aceptan archivos de entrada de hasta 20 MB que el navegador pueda abrir (se recomienda JPG, PNG o WebP); la subida resultante tiene un límite de 5 MB. Si el guardado del regalo falla después de la subida, se intenta retirar únicamente el archivo recién creado. Al reemplazar una foto existente no se borra automáticamente la anterior, para evitar romper otros regalos que usen la misma imagen.
 
 **No colocar** contraseñas, claves service-role, secretos JWT ni conexión de PostgreSQL en variables `NEXT_PUBLIC_*`, GitHub, README o archivos versionados. `.env.local` está ignorado. La clave pública está diseñada para estar en el navegador; la seguridad depende de las políticas SQL incluidas.
 
